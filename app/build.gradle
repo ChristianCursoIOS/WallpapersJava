@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services' /*Se agrego esta linea para corregir el error de
+    Default FirebaseApp is not initialized in this process com.appscloud.wallpapersjava.
+            Make sure to call FirebaseApp.initializeApp(Context) first.*/
+}
+
+android {
+    namespace 'com.appscloud.wallpapersjava'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.appscloud.wallpapersjava"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0' //actualizado
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'//Esta libreria contiene Navigation drawer
+    implementation 'com.airbnb.android:lottie:3.0.1' //Lottie libreria para animación
+    implementation 'com.google.firebase:firebase-database:20.2.2' //Firebase para  la base de datos/Actualizado
+    implementation 'com.google.firebase:firebase-auth:22.0.0' //Firebase para la autenticación/Actualizado
+    implementation 'com.google.firebase:firebase-storage:20.2.0' //Firebase para la autenticación/Actualizado
+    implementation 'com.firebaseui:firebase-ui-database:8.0.0' //Firebase
+    implementation 'com.squareup.picasso:picasso:2.71828' //Para gestionar imágenes
+    implementation 'androidx.cardview:cardview:1.0.0' //Mejorar diseño a nuestro item
+    //implementation 'androidx.recyclerview:recyclerview:1.3.0' //RecyclerView
+    implementation 'com.github.clans:fab:1.6.4' //botón flotante
+
+    //Testing--------------------------------
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

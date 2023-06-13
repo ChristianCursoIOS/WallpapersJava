@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_gravity="center">
+    
+    <TextView
+        android:id="@+id/titulo_ordenar_en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="@string/titulo_ordenar"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        app:lottie_imageAssetsFolder="assets"
+        app:lottie_fileName="aOrdenar.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        />
+
+    <Button
+        android:id="@+id/btn_ordenar_dos_columnas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_personalizado"
+        android:text="@string/dos_columnas"
+        />
+
+    <Button
+        android:id="@+id/btn_ordenar_tres_columnas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_personalizado"
+        android:text="@string/tres_columnas"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

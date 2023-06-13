@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".categorias.peliculasadmin.AgregarPeliculaActivity">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Titulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_pelicula" />
+
+            <!-- ID -->
+            <TextView
+                android:id="@+id/id_musica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/id_musica"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+            <!-- Nombre de la imágen que se va publicar-->
+            <EditText
+                android:id="@+id/eT_escribe_nombre_musica"
+                android:layout_width="320dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:hint="@string/escribe_nombre"
+                android:inputType="textCapWords|textAutoCorrect" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center">
+
+                <!-- Icono del contador de vistas -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_view" />
+
+                <!-- EL contador se inicializa en 0 -->
+                <TextView
+                    android:id="@+id/tV_vistas_musica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/vista_pelicula"
+                    android:textSize="16sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Icono para abrir la galeria -->
+        <ImageView
+            android:id="@+id/iV_agregar_musica"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/abrir_galeria"
+            android:src="@drawable/ic_imagen" />
+
+        <!-- Botón para publicar la imagen en la dataBase -->
+        <Button
+            android:id="@+id/btn_publicar_musica"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_personalizado"
+            android:text="@string/publicar_musica"
+            android:textColor="@color/black" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

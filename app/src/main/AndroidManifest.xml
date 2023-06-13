@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="31">
+        <activity
+            android:name=".categoriaClienteFirebase.ListaClienteFirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".detalleCliente.DetalleImgClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.ControladorDispositivoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoriascliente.VideojuegosClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoriascliente.SeriesClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoriascliente.MusicaClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoriascliente.PeliculasClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentAdmin.activity.DetalleAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentAdmin.activity.CambioPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.videojuegosadmin.AgregarVidegamesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.seriesadmin.AgregarSeriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.musicaadmin.AgregarMusicaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.peliculasadmin.AgregarPeliculaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.musicaadmin.CategoriaMusicAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.videojuegosadmin.CategoriaVidegamesAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.seriesadmin.CategoriaSeriesAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".categorias.peliculasadmin.MainActivityCategoriaPeliculas"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityInicioSesion"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityCliente"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivityAdmin"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Carga"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Agregamos el proveedor de archivos con el propio paquete -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.appscloud.wallpapersjava.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files_path"></meta-data>
+        </provider>
+    </application>
+
+</manifest>

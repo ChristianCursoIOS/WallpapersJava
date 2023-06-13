@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/inicio_admin"
+            android:icon="@drawable/ic_one"
+            android:title="@string/inicio_admin" />
+        <item
+            android:id="@+id/perfil_admin"
+            android:icon="@drawable/ic_two"
+            android:title="@string/perfil_admin" />
+        <item
+            android:id="@+id/registro_admin"
+            android:icon="@drawable/ic_three"
+            android:title="@string/registrar_admin" />
+        <item
+            android:id="@+id/listar_admin"
+            android:icon="@drawable/ic_four"
+            android:title="@string/listar_admin" />
+        <item
+            android:id="@+id/cerrar_sesion"
+            android:icon="@drawable/ic_five"
+            android:title="@string/cerrar_sesion" />
+
+
+    </group>
+</menu>

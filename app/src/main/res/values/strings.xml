@@ -1,0 +1,192 @@
+<resources>
+    <string name="app_name">WallpapersJava</string>
+    <string name="developer">Apps Cloud AI</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Menú Admin -->
+    <string name="inicio_admin">Inicio</string>
+    <string name="perfil_admin">Perfil admin</string>
+    <string name="registrar_admin">Registrar</string>
+    <string name="listar_admin">Lista de administradores</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Menú Cliente -->
+    <string name="opciones_txt">Opciones</string>
+    <string name="inicio_cliente">Inicio</string>
+
+    <string name="mas_opciones">Más opciones</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="compartir">Compartir</string>
+    <string name="administrador">Administradorf</string>
+
+    <!-- Registro de administradores -->
+    <string name="registro_administradores">Registro de administradores</string>
+    <string name="correo_electronico">Email</string>
+    <string name="contraseña">Password</string>
+    <string name="nombres">Nombre completo</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="edad">Edad</string>
+    <string name="fecha_registro">Fecha de registro</string>
+    <string name="registrar_bbtn_admins">Registrar</string>
+
+    <!-- Login de administradores -->
+    <string name="acceder">Login de administradores</string>
+    <string name="login">Log in</string>
+    <string name="Ingresar">Ingresar</string>
+    <string name="elegir_categoria">Elige una categoría</string>
+
+    <!-- Categorías -->
+    <string name="cat_peliculas">Películas</string>
+    <string name="cat_series">Series</string>
+    <string name="cat_musica">Música</string>
+    <string name="cat_videojuegos">Videogames</string>
+    <string name="fecha_admin"> -- </string>
+    <string name="bienvenido_tV">Bienbenido(a)</string>
+    <string name="nombre_bienvenido_tV"> -- </string>
+
+    <!-- Menu parte superior derecha -->
+    <string name="agregar_mSDerecha">Agregar</string>
+    <string name="vista_mSDerecha">Vista</string>
+
+    <!-- Agregar Img Películas -->
+    <string name="nombre_pelicula">Nombre de imágen</string>
+    <string name="escribe_nombre">Escribe nombre aquí</string>
+    <string name="vista_pelicula">0</string>
+    <string name="publicar_pelicula">Publicar</string>
+    <string name="abrir_galeria">Abrir galeria</string>
+    <string name="id_peliculas"> -- </string>
+
+
+    <!-- Agregar Img Series -->
+    <string name="nombre_serie">Nombre de imágen</string>
+    <string name="escribe_nombre_serie">Escribe nombre aquí</string>
+    <string name="vista_serie">0</string>
+    <string name="publicar_serie">Publicar</string>
+    <string name="id_series"> -- </string>
+
+
+    <!-- Agregar Img Música -->
+    <string name="nombre_musica">Nombre de imágen</string>
+    <string name="escribe_nombre_musica">Escribe nombre aquí</string>
+    <string name="vistas_musica">0</string>
+    <string name="publicar_musica">Publicar</string>
+    <string name="id_musica"> -- </string>
+
+
+    <!-- Agregar Img Videojuegos -->
+    <string name="nombre_videjuego">Nombre de imágen</string>
+    <string name="escribe_nombre_videojuego">Escribe nombre aquí</string>
+    <string name="vista_videojuego">0</string>
+    <string name="publicar_videojuego">Publicar</string>
+    <string name="id_vgames"> -- </string>
+
+
+    <!-- Item pelicula-->
+    <string name="nombre_img_peliculas">--</string>
+    <string name="vistas_img_peliculas">--</string>
+
+    <!-- Item música-->
+    <string name="nombre_img_musica">--</string>
+    <string name="vistas_img_musica">--</string>
+
+    <!-- Item serie-->
+    <string name="nombre_img_serie">--</string>
+    <string name="vistas_img_serie">--</string>
+
+    <!-- Item Videojuegos-->
+    <string name="nombre_img_videojuego">--</string>
+    <string name="vistas_img_videojuego">--</string>
+
+    <!-- Botónes ordenar-->
+    <string name="titulo_ordenar">Ordenar en: </string>
+    <string name="dos_columnas">2 Columnas</string>
+    <string name="tres_columnas">3 Columnas</string>
+
+    <!-- Perfil administrador-->
+    <string name="seccion_perfil_admin">Mi perfil</string>
+    <string name="mi_informacion">Mi información</string>
+    <string name="uid_perfil">UID: </string>
+    <string name="uid_perfil_"> -- </string>
+    <string name="nombre_perfil">Nombre: </string>
+    <string name="nombre_perfil_"> -- </string>
+    <string name="apellidos_perfil">Apellidos: </string>
+    <string name="apellidos_perfil_"> -- </string>
+    <string name="correo_perfil">Corre: </string>
+    <string name="correo_perfil_"> -- </string>
+    <string name="pass_perfil">Contraseña:</string>
+    <string name="edad_perfil">Edad: </string>
+    <string name="edad_perfil_"> -- </string>
+    <string name="actualizar_pass_perfil">Actualizar password</string>
+    <string name="actualizar_pass_perfil_"> -- </string>
+    <string name="actualizar_datos">Actualizar datos</string>
+
+    <!-- Perfil administrador-->
+    <string name="mis_credenciales">Mis credenciales</string>
+    <string name="tV_pass_actual">Contraseña actual: </string>
+    <string name="pass_actual"> -- </string>
+    <string name="eT_pass_actual">Contraseña actual</string>
+    <string name="et_pass_nuevo">Contraseña nueva</string>
+    <string name="btn_cambiar_pass">Cambiar contraseña</string>
+    <string name="btn_ir_inicio">Ir a inicio</string>
+    <string name="tV_nota">Nota: Si cambia la contraseña, se cerrará la sesión automáticamente</string>
+
+    <!--administrador item-->
+    <string name="nombres_admin_item">Nombre </string>
+    <string name="email_admin_item">Correo electrónico</string>
+
+
+    <string name="buscar_administrador">Buscar</string>
+
+    <!--Detalle administrador-->
+    <string name="detalle_admin">Detalle del administrador </string>
+    <string name="detalle_uid_admin">UID </string>
+    <string name="detalle_nombres_admin">Nombres</string>
+    <string name="detalle_apellidos_admin">Apellidos</string>
+    <string name="detalle_email_admin">Email</string>
+    <string name="detalle_edad_admin">Edad</string>
+
+
+    <!--Detalle img categoria dispositivo -->
+    <string name="nombre_categoria_dispositivo"> -- </string>
+    <string name="nombre_categoria_tV_firebase">Categorias</string>
+    <string name="mas_categoria_tV">Más categorias</string>
+    <string name="nombre_categorias_firebase"> -- </string>
+
+    <!--Detalle Cliente img-->
+    <string name="nombre_img_detalle_cliente">Nombre de imagen </string>
+    <string name="nombre_imagen_detalle_cliente"> -- </string>
+    <string name="visualizacion_cliente">Visualizacioines</string>
+    <string name="vista_detalle_cliente"> -- </string>
+
+    <!--Apartado informativo-->
+    <string name="informacion_app">Disfruta de nuestra app </string>
+
+
+    <!--imagen categoria elegida firebase-->
+    <string name="nombre_item_img_cat_elegida_firebase"> -- </string>
+    <string name="vistas_item_img_cat_elegidafirebase"> -- </string>
+
+    <!--Titulo informativo -->
+    <string name="titulo_informativo_tV"> -- </string>
+
+    <!--Fecha -->
+    <string name="fecha"> -- </string>
+
+    <!--Acerca de la aplicación -->
+    <string name="acerca_de_app">Acerca de</string>
+    <string name="info_desarrollador">Desarrollado por: Christian Escobar</string>
+    <string name="info_desarrollor_correo">Mail: appsclouddevelopment@gmail.com</string>
+    <string name="info_version">Version: 1.0</string>
+    <string name="pagina_web">Página web</string>
+    <string name="nuestras_redes">Nuestras redes</string>
+    <string name="info_redes">Nuestras Redes</string>
+    <string name="info_website">Página web</string>
+    <string name="info_facebook">Facebook</string>
+    <string name="info_instagram">Instagram</string>
+    <string name="info_youtube">Youtube</string>
+
+
+</resources>
