@@ -20,7 +20,7 @@
     <string name="mas_opciones">Más opciones</string>
     <string name="acerca_de">Acerca de</string>
     <string name="compartir">Compartir</string>
-    <string name="administrador">Administradorf</string>
+    <string name="administrador">Administrador</string>
 
     <!-- Registro de administradores -->
     <string name="registro_administradores">Registro de administradores</string>
@@ -35,6 +35,7 @@
     <!-- Login de administradores -->
     <string name="acceder">Login de administradores</string>
     <string name="login">Log in</string>
+    <string name="apartado_administradores">Solo para administradores</string>
     <string name="Ingresar">Ingresar</string>
     <string name="elegir_categoria">Elige una categoría</string>
 
@@ -187,6 +188,27 @@
     <string name="info_facebook">Facebook</string>
     <string name="info_instagram">Instagram</string>
     <string name="info_youtube">Youtube</string>
+
+
+    <string name="sin_conexion">No hay conexión a internet</string>
+
+    <!--Animaciones para aceptar permiso-->
+    <string name="active_permisos">Active los permisos de almacenamiento</string>
+    <string name="permisos_ok">OK</string>
+
+    <!--Animaciones para descarga exitosa-->
+    <string name="descarga_exitosa">Descarga exitosa</string>
+    <string name="descarga_exitosa_ok">OK</string>
+    <string name="guardado_en">Guardado en la carpeta /wallpaperAppAI/</string>
+
+    <!--Establecer como fondo de pantalla-->
+    <string name="se_establecio_como_fondodepantalla">Se estableció como fondo de pantalla</string>
+    <string name="establecido_exitosa_ok">OK</string>
+
+
+    <!-- Fragmento Compartir-->
+    <string name="ayudanos">Ayudanos a crecer compartiendo nuestra app la cuál es de manera gratuita</string>
+    <string name="compartir_app">Compartir App</string>
 
 
 </resources>

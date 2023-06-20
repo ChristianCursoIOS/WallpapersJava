@@ -9,13 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/apartado_administradores"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/btn_login_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/acceder" />
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_personalizado_2"
+            android:text="@string/acceder"
+            android:textColor="@color/white" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

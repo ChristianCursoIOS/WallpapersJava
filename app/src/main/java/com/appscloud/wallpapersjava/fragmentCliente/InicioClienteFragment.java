@@ -1,15 +1,14 @@
 package com.appscloud.wallpapersjava.fragmentCliente;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Network;
-import android.net.NetworkInfo;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +30,11 @@ import com.appscloud.wallpapersjava.categorias.dispositivo.CategoriaDispositivo;
 import com.appscloud.wallpapersjava.categorias.dispositivo.DispositivoViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -55,6 +59,16 @@ public class InicioClienteFragment extends Fragment {
 
     TextView fecha;
 
+
+    LinearLayoutCompat conConexion, sinConexion;
+
+    AdView mAdView;
+
+    /*ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
+    ConnectivityManager.NetworkCallback networkCallback;
+    Network network; */
+
     public InicioClienteFragment() {
         // Required empty public constructor
     }
@@ -65,6 +79,14 @@ public class InicioClienteFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio_cliente, container, false);
+
+        //inicializamos nuestors lineraLayoutCompat
+
+        conConexion = view.findViewById(R.id.con_conexion);
+        sinConexion = view.findViewById(R.id.sin_conexion);
+
+        //  connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
 
         //inicializamos las bases de datos
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -102,51 +124,71 @@ public class InicioClienteFragment extends Fragment {
         String formatoFecha = simpleDateFormat.format(date);
         fecha.setText(formatoFecha);
 
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         //invocamos nuestro método para que al inicializar el fragmento y se pueda visualizar nuestras categorias
         verCategoriasDispositivo();
         verCategoriasDeFirebase();
         verApartadoInformativo();
-        validarConexionAInternet();
+
+       /* final String DEBUG_TAG = "NetworkStatusExample";
+
+        boolean isWifiConn = false;
+        boolean isMobileConn = false;
+        for (Network network : connectivityManager.getAllNetworks()) {
+            networkInfo = connectivityManager.getNetworkInfo(network);
+            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                isWifiConn |= networkInfo.isConnected();
+            }
+            if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                isMobileConn |= networkInfo.isConnected();
+            }
+        }
+        Log.d(DEBUG_TAG, "Wifi connected: " + isWifiConn);
+        Log.d(DEBUG_TAG, "Mobile connected: " + isMobileConn);
+
+        if (isWifiConn || isMobileConn) {
+            conConexion.setVisibility(View.VISIBLE);
+        } else {
+            sinConexion.setVisibility(View.VISIBLE);
+        }*/
+
+        if (conectarAInternet()) {
+            conConexion.setVisibility(View.VISIBLE);
+        } else {
+            sinConexion.setVisibility(View.VISIBLE);
+
+        }
 
 
         return view;
+
     }
 
-
-
-    private void validarConexionAInternet() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity()
+    private boolean conectarAInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        //NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-       /* if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-            Toast.makeText(getActivity(), "Si hay conexión a internet", Toast.LENGTH_SHORT).show();
-
-        } else {
-            Toast.makeText(getActivity(), "No hay conexción a internet", Toast.LENGTH_LONG).show();
-        }*/
-
-        cm.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback() {
-            @Override
-            public void onAvailable(@NonNull Network network) {
-
-            }
-
-            @Override
-            public void onLost(@NonNull Network network) {
-                Toast.makeText(getActivity(), "No hay conexión a internet por favor conectate " +
-                        "a una red", Toast.LENGTH_LONG).show();
-
-
-
-            }
-        });
-
-
-
+        return connectivityManager.getActiveNetworkInfo() != null
+                && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
+
+
+
+    /*public boolean isOnline() {
+        networkInfo = connectivityManager.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
+    }*/
 
 
     //Este método muestra las categorias que se suben desde el dispositivo son las imagenes que

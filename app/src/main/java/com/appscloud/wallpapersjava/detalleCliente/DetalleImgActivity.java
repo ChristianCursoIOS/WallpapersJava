@@ -2,13 +2,13 @@ package com.appscloud.wallpapersjava.detalleCliente;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.WallpaperManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -24,40 +24,39 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appscloud.wallpapersjava.R;
-import com.appscloud.wallpapersjava.categorias.musicaadmin.Musica;
-import com.appscloud.wallpapersjava.categorias.peliculasadmin.Pelicula;
-import com.appscloud.wallpapersjava.fragmentAdmin.activity.DetalleAdminActivity;
 import com.github.clans.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Objects;
 
-public class DetalleImgClienteActivity extends AppCompatActivity {
+public class DetalleImgActivity extends AppCompatActivity {
 
     /*   private final int CODIGO_ALMACENAMIENTO = 1;
        private final int CODIGO_ALMACENAMIENTO_API_30 = 2;*/
     private TextView tVNombreDetalleImg;
-     TextView tVVistasDetalle;
+    TextView tVVistasDetalle;
     private ImageView iVimagen;
-     FloatingActionButton fabDescargar, fabCompartir, fabEstablecer;
+    FloatingActionButton fabDescargar, fabCompartir, fabEstablecer;
     private Bitmap bitmap; //mapa de bits, es la estructura donde se almacenan los pixeles que conforman un gráfico
-     Uri imageUri = null;
+    Uri imageUri = null;
+
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_img_cliente);
+        setContentView(R.layout.activity_detalle_img);
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -72,6 +71,8 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
         fabCompartir = findViewById(R.id.fab_compartir);
         fabDescargar = findViewById(R.id.fab_descargar);
         fabEstablecer = findViewById(R.id.fab_establecer);
+
+        dialog = new Dialog(this);
 
 
         //Obtenemos nuestro intent del detalle de la imagen
@@ -95,7 +96,7 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
             //Si la version es mayor o igual a Android 11
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 //si el permiso es concedido descargamos imagen
-                if (ContextCompat.checkSelfPermission(DetalleImgClienteActivity.this,
+                if (ContextCompat.checkSelfPermission(DetalleImgActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
                     descargarImagenAndroid11oSuperior();
@@ -107,7 +108,7 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
                 //Si la verisón de Android es igual o mayor a Android 6
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 //si el permiso fue concedido descargamos la imagen
-                if (ContextCompat.checkSelfPermission(DetalleImgClienteActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                if (ContextCompat.checkSelfPermission(DetalleImgActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
                     descargarImagenAndroid6oMenor();
 
@@ -150,8 +151,8 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
                     descargarImagenAndroid6oMenor();
 
                 } else { //si el permiso fue denegado
-                    Toast.makeText(this, "Por favor acepte el permiso para poder " +
-                            "descargar la imagen", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(this, "Por favor acepte el permiso para poder " + "descargar la imagen", Toast.LENGTH_SHORT).show();
+                    activarPermisosAnimacion();
 
                 }
 
@@ -164,8 +165,8 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
                     descargarImagenAndroid11oSuperior();
 
                 } else { //si el permiso fue denegado
-                    Toast.makeText(this, "Por favor acepte el permiso para poder " +
-                            "descargar la imagen", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(this, "Por favor acepte el permiso para poder " + "descargar la imagen", Toast.LENGTH_SHORT).show();
+                    activarPermisosAnimacion();
 
                 }
 
@@ -189,7 +190,8 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
             outputStream = resolver.openOutputStream(Objects.requireNonNull(imageUri));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             Objects.requireNonNull(outputStream);
-            Toast.makeText(this, "La imagen se descargo correctamente", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "La imagen se descargo correctamente", Toast.LENGTH_SHORT).show();
+            descargarImgExitosaAnimacion();
 
         } catch (Exception e) {
             Toast.makeText(this, "No se pudo descargar la imagen", Toast.LENGTH_SHORT).show();
@@ -220,7 +222,8 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             outputStream.flush();
             outputStream.close();
-            Toast.makeText(this, "La imagen se descargo correctamente", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "La imagen se descargo correctamente", Toast.LENGTH_SHORT).show();
+            descargarImgExitosaAnimacion();
 
 
         } catch (Exception e) {
@@ -308,11 +311,69 @@ public class DetalleImgClienteActivity extends AppCompatActivity {
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
         try {
             wallpaperManager.setBitmap(bitmap);
-            Toast.makeText(this, "Establecido con éxito", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Establecido con éxito", Toast.LENGTH_SHORT).show();
+            establecerImgFondoPantalla();
 
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void activarPermisosAnimacion() {
+        Button btnPermisosOk;
+
+        dialog.setContentView(R.layout.animacion_permiso);
+        //Conexión con el cuadro de dialigo
+        btnPermisosOk = dialog.findViewById(R.id.btn_permisos);
+
+        btnPermisosOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setCancelable(false); // sirve para que el dialogo no lo podamos cerrar si tocamos
+        //alrededor del dialogo solo cuando presionemos el boton ok
+    }
+
+    private void descargarImgExitosaAnimacion() {
+        Button btnDescargaExitosa;
+
+        dialog.setContentView(R.layout.animacion_descarga_exitosa);
+        //Conexión con el cuadro de dialigo
+        btnDescargaExitosa = dialog.findViewById(R.id.btn_descarga_exitosa);
+
+        btnDescargaExitosa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setCancelable(false); // sirve para que el dialogo no lo podamos cerrar si tocamos
+        //alrededor del dialogo solo cuando presionemos el boton ok
+    }
+
+    private void establecerImgFondoPantalla() {
+        Button btnEstablecer;
+
+        dialog.setContentView(R.layout.animacion_establecida);
+        //Conexión con el cuadro de dialigo
+        btnEstablecer = dialog.findViewById(R.id.btn_establecido_fondo);
+
+        btnEstablecer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setCancelable(false); // sirve para que el dialogo no lo podamos cerrar si tocamos
+        //alrededor del dialogo solo cuando presionemos el boton ok
     }
 
 

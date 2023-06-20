@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Con conexion a internet-->
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/con_conexion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -43,10 +47,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 android:padding="4dp"
                 android:text="@string/nombre_categoria_tV_firebase"
                 android:textColor="@color/black"
-                android:layout_marginTop="4dp"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -55,10 +59,23 @@
                 android:layout_height="250dp"
                 android:layout_marginTop="4dp" />
 
+            <!--Banner de prueba ca-app-pub-3940256099942544/6300978111-->
+            <!--Banner de produccion ca-app-pub-7224415713057075/5339690385-->
+            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+
+            </com.google.android.gms.ads.AdView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:padding="4dp"
                 android:text="@string/mas_categoria_tV"
                 android:textColor="@color/black"
@@ -84,6 +101,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginTop="4dp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Sin conexion a internet-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/sin_conexion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop_default_linearlayout"
+                android:text="@string/sin_conexion"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/marginTop_default_linearlayout"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="desconectado.json"
+                app:lottie_imageAssetsFolder="assets"
+                app:lottie_loop="true" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

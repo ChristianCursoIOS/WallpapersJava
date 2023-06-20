@@ -22,11 +22,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.appscloud.wallpapersjava.R;
-import com.appscloud.wallpapersjava.categorias.musicaadmin.Musica;
-import com.appscloud.wallpapersjava.categorias.musicaadmin.ViewHolderMusica;
-import com.appscloud.wallpapersjava.categorias.peliculasadmin.Pelicula;
-import com.appscloud.wallpapersjava.categoriascliente.MusicaClienteActivity;
-import com.appscloud.wallpapersjava.detalleCliente.DetalleImgClienteActivity;
+import com.appscloud.wallpapersjava.detalleCliente.DetalleImgActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -151,7 +147,7 @@ public class ListaClienteFirebaseActivity extends AppCompatActivity {
                         });
 
                         Intent intentInfoDetalle = new Intent(ListaClienteFirebaseActivity.this,
-                                DetalleImgClienteActivity.class);
+                                DetalleImgActivity.class);
                         intentInfoDetalle.putExtra("nombre", nombreImg);
                         intentInfoDetalle.putExtra("vistas", vistasImg);
                         intentInfoDetalle.putExtra("imagen", imagen);

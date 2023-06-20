@@ -45,6 +45,9 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0' //Mejorar diseño a nuestro item
     //implementation 'androidx.recyclerview:recyclerview:1.3.0' //RecyclerView
     implementation 'com.github.clans:fab:1.6.4' //botón flotante
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
+
+
 
     //Testing--------------------------------
     testImplementation 'junit:junit:4.13.2'

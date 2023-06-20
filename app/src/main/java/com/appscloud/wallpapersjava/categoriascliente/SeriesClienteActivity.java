@@ -2,13 +2,11 @@ package com.appscloud.wallpapersjava.categoriascliente;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -21,17 +19,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appscloud.wallpapersjava.R;
-import com.appscloud.wallpapersjava.categorias.musicaadmin.Musica;
-import com.appscloud.wallpapersjava.categorias.peliculasadmin.AgregarPeliculaActivity;
-import com.appscloud.wallpapersjava.categorias.peliculasadmin.Pelicula;
-import com.appscloud.wallpapersjava.categorias.seriesadmin.AgregarSeriesActivity;
-import com.appscloud.wallpapersjava.categorias.seriesadmin.CategoriaSeriesAdmin;
 import com.appscloud.wallpapersjava.categorias.seriesadmin.Serie;
 import com.appscloud.wallpapersjava.categorias.seriesadmin.ViewHolderSeries;
-import com.appscloud.wallpapersjava.detalleCliente.DetalleImgClienteActivity;
+import com.appscloud.wallpapersjava.detalleCliente.DetalleImgActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -154,7 +146,7 @@ public class SeriesClienteActivity extends AppCompatActivity {
 
 
                         Intent intentInfoDetalle = new Intent(SeriesClienteActivity.this,
-                                DetalleImgClienteActivity.class);
+                                DetalleImgActivity.class);
 
                         intentInfoDetalle.putExtra("nombre", nomnbreImg);
                         intentInfoDetalle.putExtra("vistas", vistasImg);
