@@ -105,6 +105,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyViewHolder> {
         });
 
     }
+    // PRUEBA ENVIANDO COMMIT
 
     //getItemCount Sirve para recorrer la lista de los administradores registrados en la base de datos y asi
     // obtenemos el tamaño de la lista
