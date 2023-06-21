@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appscloud.wallpapersjava.R;
-import com.appscloud.wallpapersjava.categorias.musicaadmin.ViewHolderMusica;
 import com.squareup.picasso.Picasso;
 
 public class ViewHolderSeries extends RecyclerView.ViewHolder {

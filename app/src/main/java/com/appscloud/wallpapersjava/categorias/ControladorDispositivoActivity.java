@@ -1,9 +1,9 @@
 package com.appscloud.wallpapersjava.categorias;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.appscloud.wallpapersjava.R;
 import com.appscloud.wallpapersjava.categoriascliente.MusicaClienteActivity;

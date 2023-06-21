@@ -2,18 +2,14 @@ package com.appscloud.wallpapersjava.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.arch.core.executor.DefaultTaskExecutor;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appscloud.wallpapersjava.R;
@@ -21,9 +17,7 @@ import com.appscloud.wallpapersjava.fragmentAdmin.activity.DetalleAdminActivity;
 import com.appscloud.wallpapersjava.modelo.Administrador;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Adaptador extends RecyclerView.Adapter<Adaptador.MyViewHolder> {
 

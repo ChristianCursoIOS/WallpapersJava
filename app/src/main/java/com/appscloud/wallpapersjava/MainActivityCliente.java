@@ -1,5 +1,8 @@
 package com.appscloud.wallpapersjava;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.appscloud.wallpapersjava.fragmentAdmin.InicioAdminFragment;
-import com.appscloud.wallpapersjava.fragmentAdmin.ListaFragment;
-import com.appscloud.wallpapersjava.fragmentAdmin.PerfilAdminFragment;
-import com.appscloud.wallpapersjava.fragmentAdmin.RegistroAdminFragment;
 import com.appscloud.wallpapersjava.fragmentCliente.AcercaDeClienteFragment;
 import com.appscloud.wallpapersjava.fragmentCliente.CompartirClienteFragment;
 import com.appscloud.wallpapersjava.fragmentCliente.InicioClienteFragment;

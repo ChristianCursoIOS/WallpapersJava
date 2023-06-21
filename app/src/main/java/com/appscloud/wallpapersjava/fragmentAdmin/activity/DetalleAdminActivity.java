@@ -1,17 +1,14 @@
 package com.appscloud.wallpapersjava.fragmentAdmin.activity;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.appscloud.wallpapersjava.R;
 import com.appscloud.wallpapersjava.modelo.Administrador;
-import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 public class DetalleAdminActivity extends AppCompatActivity {

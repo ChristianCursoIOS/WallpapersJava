@@ -39,7 +39,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.0.1' //Lottie libreria para animación
     implementation 'com.google.firebase:firebase-database:20.2.2' //Firebase para  la base de datos/Actualizado
     implementation 'com.google.firebase:firebase-auth:22.0.0' //Firebase para la autenticación/Actualizado
-    implementation 'com.google.firebase:firebase-storage:20.2.0' //Firebase para la autenticación/Actualizado
+    implementation 'com.google.firebase:firebase-storage:20.2.1' //Firebase para la autenticación/Actualizado
     implementation 'com.firebaseui:firebase-ui-database:8.0.0' //Firebase
     implementation 'com.squareup.picasso:picasso:2.71828' //Para gestionar imágenes
     implementation 'androidx.cardview:cardview:1.0.0' //Mejorar diseño a nuestro item

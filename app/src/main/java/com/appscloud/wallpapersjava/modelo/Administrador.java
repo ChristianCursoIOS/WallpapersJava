@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 //implementamos la interface Parcelable para transoformar al objeto Administrador en un formato
 //que pueda ser pasado mediante un intent y a esta conversion se le llama serializar el objeto
 //NOTA: UTILIZAMOS PARCELABLE POR RECOMENDACION DE ANDROID EN SU DOCUMENTACION
