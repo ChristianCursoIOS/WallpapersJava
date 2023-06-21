@@ -1,12 +1,5 @@
 package com.appscloud.wallpapersjava.detalleCliente;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.Manifest;
 import android.app.Dialog;
 import android.app.WallpaperManager;
@@ -23,14 +16,30 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+
 import com.appscloud.wallpapersjava.R;
 import com.github.clans.fab.FloatingActionButton;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -52,6 +61,8 @@ public class DetalleImgActivity extends AppCompatActivity {
     Uri imageUri = null;
 
     Dialog dialog;
+    InterstitialAd mInterstitialAd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +79,32 @@ public class DetalleImgActivity extends AppCompatActivity {
         tVVistasDetalle = findViewById(R.id.tv_vista_detalle_cliente);
         iVimagen = findViewById(R.id.aCIV_detalle_cliente);
 
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        //Log.i(TAG, "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        // Log.d(TAG, loadAdError.toString());
+                        mInterstitialAd = null;
+                    }
+                });
+
         fabCompartir = findViewById(R.id.fab_compartir);
         fabDescargar = findViewById(R.id.fab_descargar);
         fabEstablecer = findViewById(R.id.fab_establecer);
@@ -83,6 +120,7 @@ public class DetalleImgActivity extends AppCompatActivity {
         //colocamos los datos en sus TextView correspondientes
         tVNombreDetalleImg.setText(nombre);
         tVVistasDetalle.setText(numeroDeVistas);
+
         try {
             Picasso.get().load(imagen).placeholder(R.drawable.icon_categoria)
                     .into(iVimagen);
@@ -91,6 +129,11 @@ public class DetalleImgActivity extends AppCompatActivity {
             Picasso.get().load(R.drawable.icon_categoria).into(iVimagen);
 
         }
+
+        // Interstitial produccion :ca-app-pub-7224415713057075/9869768815 -->
+        // Interstitial prueba :ca-app-pub-3940256099942544/1033173712 -->
+
+
         //Establecemos accion al nuestro botónes
         fabDescargar.setOnClickListener(descargar -> {
             //Si la version es mayor o igual a Android 11
@@ -99,6 +142,14 @@ public class DetalleImgActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(DetalleImgActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
+
+                    //Aparece el anuncio, luego se procede a descargar la imagen
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd.show(this);
+                    } else {
+                        // no se cargó bien el anuncio
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    }
                     descargarImagenAndroid11oSuperior();
 
                 } else {
@@ -108,16 +159,32 @@ public class DetalleImgActivity extends AppCompatActivity {
                 //Si la verisón de Android es igual o mayor a Android 6
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 //si el permiso fue concedido descargamos la imagen
-                if (ContextCompat.checkSelfPermission(DetalleImgActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                if (ContextCompat.checkSelfPermission(DetalleImgActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
+
+                    //Aparece el anuncio, luego se procede a descargar la imagen
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd.show(this);
+                    } else {
+                        // no se cargó bien el anuncio
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    }
                     descargarImagenAndroid6oMenor();
 
                 } else {
                     solicitarPermisoDescargar.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 }
 
-
-            } else { //si la versión de Android es menor a 6
+                //si la versión de Android es menor a 6
+            } else {
+                //Aparece el anuncio, luego se procede a descargar la imagen
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(this);
+                } else {
+                    // No se cargó bien el anuncio
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                }
                 descargarImagenAndroid6oMenor();
 
 
@@ -311,7 +378,7 @@ public class DetalleImgActivity extends AppCompatActivity {
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
         try {
             wallpaperManager.setBitmap(bitmap);
-           // Toast.makeText(this, "Establecido con éxito", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Establecido con éxito", Toast.LENGTH_SHORT).show();
             establecerImgFondoPantalla();
 
         } catch (Exception e) {
