@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_deafult"
     tools:context=".fragmentCliente.InicioClienteFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -36,6 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
+                    android:textColor="@color/white"
                     android:text="@string/fecha"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -50,7 +52,7 @@
                 android:layout_marginTop="4dp"
                 android:padding="4dp"
                 android:text="@string/nombre_categoria_tV_firebase"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -78,7 +80,7 @@
                 android:layout_marginTop="8dp"
                 android:padding="4dp"
                 android:text="@string/mas_categoria_tV"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -93,7 +95,7 @@
                 android:layout_marginStart="8dp"
                 android:padding="4dp"
                 android:text="@string/informacion_app"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
