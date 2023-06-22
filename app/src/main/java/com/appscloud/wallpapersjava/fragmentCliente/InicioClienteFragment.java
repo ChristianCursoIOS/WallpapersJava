@@ -3,6 +3,8 @@ package com.appscloud.wallpapersjava.fragmentCliente;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkRequest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -62,10 +65,9 @@ public class InicioClienteFragment extends Fragment {
     AdView mAdView;
 
 
-    /*ConnectivityManager connectivityManager;
-    NetworkInfo networkInfo;
+    ConnectivityManager connectivityManager;
     ConnectivityManager.NetworkCallback networkCallback;
-    Network network; */
+    ;
 
     public InicioClienteFragment() {
         // Required empty public constructor
@@ -160,32 +162,60 @@ public class InicioClienteFragment extends Fragment {
             sinConexion.setVisibility(View.VISIBLE);
         }*/
 
-        if (conectarAInternet()) {
+        // Temporalmente comentado para gestionar conexcion a internet
+       /* if (conectarAInternet()) {
             conConexion.setVisibility(View.VISIBLE);
         } else {
             sinConexion.setVisibility(View.VISIBLE);
-
-        }
-
-
+        }*/
         return view;
 
     }
 
-    private boolean conectarAInternet() {
+    // Gestiona si hay o no internet
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        connectivityManager = (ConnectivityManager) requireActivity()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        networkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onAvailable(@NonNull Network network) {
+                // con conexión a internet
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        conConexion.setVisibility(View.VISIBLE);
+                        sinConexion.setVisibility(View.GONE);
+                    }
+                });
+            }
+
+            @Override
+            public void onLost(@NonNull Network network) {
+                // si se perdio la conexión ainternet
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        sinConexion.setVisibility(View.VISIBLE);
+                        conConexion.setVisibility(View.GONE);
+                    }
+                });
+            }
+        };
+
+
+        NetworkRequest networkRequest = new NetworkRequest.Builder().build();
+        connectivityManager.registerNetworkCallback(networkRequest, networkCallback);
+    }
+
+    /*private boolean conectarAInternet() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return connectivityManager.getActiveNetworkInfo() != null
                 && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
-
-
-
-
-    /*public boolean isOnline() {
-        networkInfo = connectivityManager.getActiveNetworkInfo();
-        return (networkInfo != null && networkInfo.isConnected());
     }*/
 
 
@@ -221,7 +251,7 @@ public class InicioClienteFragment extends Fragment {
                         Intent intent = new Intent(view.getContext(), ControladorDispositivoActivity.class);
                         intent.putExtra("categoria", categoria);
                         startActivity(intent);
-                        Toast.makeText(getActivity(), categoria, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), categoria, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -266,8 +296,7 @@ public class InicioClienteFragment extends Fragment {
                         // ,la cual es enviada para ser recuperada en la clase, ListaCategoriaFirebase
                         // para que pposteriormente xe haga la lectura.,
                         Intent intentNombreCategoria = new Intent(view.getContext(), ListaClienteFirebaseActivity.class);
-                        Toast.makeText(view.getContext(), "Categoria seleccionada = " + nombreCategoria,
-                                Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(view.getContext(), "Categoria seleccionada = " + nombreCategoria, Toast.LENGTH_SHORT).show();
                         intentNombreCategoria.putExtra("nombreCategoria", nombreCategoria);
                         startActivity(intentNombreCategoria);
 
@@ -331,5 +360,11 @@ public class InicioClienteFragment extends Fragment {
             firebaseRecyclerAdapterInformacion.startListening();
 
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        connectivityManager.unregisterNetworkCallback(networkCallback);
     }
 }

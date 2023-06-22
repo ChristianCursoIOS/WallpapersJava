@@ -171,7 +171,8 @@ public class MainActivityCategoriaPeliculas extends AppCompatActivity {
                 viewHolderPelicula.setOnClickListener(new ViewHolderPelicula.ClickListener() {
                     @Override
                     public void OnItemClick(View view, int position) {
-                        Toast.makeText(MainActivityCategoriaPeliculas.this, "Item click corto", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivityCategoriaPeliculas.this, "Item click corto",
+                        // Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

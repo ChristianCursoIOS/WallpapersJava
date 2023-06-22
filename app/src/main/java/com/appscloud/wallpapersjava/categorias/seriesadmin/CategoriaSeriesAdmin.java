@@ -104,8 +104,7 @@ public class CategoriaSeriesAdmin extends AppCompatActivity {
                 viewHolderSeries.setOnClickListener(new ViewHolderSeries.CLickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(CategoriaSeriesAdmin.this, "Item click corto",
-                                Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(CategoriaSeriesAdmin.this, "Item click corto", Toast.LENGTH_SHORT).show();
 
                     }
 

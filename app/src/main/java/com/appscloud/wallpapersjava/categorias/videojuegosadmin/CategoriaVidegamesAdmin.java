@@ -103,8 +103,7 @@ public class CategoriaVidegamesAdmin extends AppCompatActivity {
                 viewHolderVideojuegos.setOnClickListener(new ViewHolderVideojuegos.CLickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(CategoriaVidegamesAdmin.this, "Item click corto",
-                                Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(CategoriaVidegamesAdmin.this, "Item click corto", Toast.LENGTH_SHORT).show();
 
                     }
 

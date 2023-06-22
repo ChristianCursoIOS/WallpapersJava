@@ -260,6 +260,7 @@ public class DetalleImgActivity extends AppCompatActivity {
             // Toast.makeText(this, "La imagen se descargo correctamente", Toast.LENGTH_SHORT).show();
             descargarImgExitosaAnimacion();
 
+
         } catch (Exception e) {
             Toast.makeText(this, "No se pudo descargar la imagen", Toast.LENGTH_SHORT).show();
         }

@@ -104,8 +104,7 @@ public class CategoriaMusicAdmin extends AppCompatActivity {
                 viewHolderMusica.setOnClickListener(new ViewHolderMusica.CLickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(CategoriaMusicAdmin.this, "Item click corto",
-                                Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(CategoriaMusicAdmin.this, "Item click corto", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -152,7 +151,7 @@ public class CategoriaMusicAdmin extends AppCompatActivity {
 
         //Al iniciar la Activity se va listar en dos columnas
         sharedPreferences = this.getSharedPreferences("Musica", MODE_PRIVATE);
-        String ordenarEn = sharedPreferences.getString("Ordenar", "Dos");
+        String ordenarEn = sharedPreferences.getString("Ordenar", "Tres");
 
         //Elegir tipo de vista
         if (ordenarEn.equals("Dos")) {

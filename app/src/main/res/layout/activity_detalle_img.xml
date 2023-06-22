@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/nombre_img_detalle_cliente"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/nombre_imagen_detalle_cliente"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -51,7 +51,7 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text="@string/vista_detalle_cliente"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text="@string/visualizacion_cliente"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
 
